@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criptografia</title>
+</head>
+<body>
+    
+    <form action="#" id="message-form">
+
+        <label for="the-message">Digite sua mensagem:</label><br>
+        <input type="text" id="the-message"><br><br>
+
+        <select name="cypher" id="cypher-select">
+            <option value="base64">base64</option>
+            <option value="cesar">cesar</option>
+        </select><br><br>
+
+        <input type="radio" name="code-decode" checked>
+        <label for="code-decode">Codificar</label><br>
+        <input type="radio" name="code-decode">
+        <label for="code-decode">Decodificar</label><br><br>
+
+        <button type="submit" id="submit">codificar</button>
+        
+    </form>
+    
+    <script src="js/index.js"></script>
+</body>
+</html>
