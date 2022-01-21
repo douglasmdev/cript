@@ -15,10 +15,11 @@
 
             <div id="message-field">
                 <label for="the-message">Digite sua mensagem:</label><br>
-                <input type="text" class="wide-text-input" id="the-message"><br>
-            </div>
+                <textarea class="wide-text-input" id="the-message"></textarea>
+            </div><br>
 
             <div id="cypher-and-increment">
+                <label for="cypher-select">Escolha a cifra:</label><br>
                 <select name="cypher" id="cypher-select">
                     <option value="base64">base64</option>
                     <option value="cesar">cesar</option>
@@ -33,13 +34,14 @@
             </div>
 
             <button type="submit" id="submit-button">codificar mensagem</button>
+
+            <div id="result-area">
+                <h1 class="big-text" id="result-title">Sua mensagem codificada</h1>
+                <div id="result-field">msg...</div>
+            </div>
         </form>
     </main>
 
-    <main id="results-main">
-        <h1 class="big-text" id="result-title">Sua mensagem codificada/decodificada</h1>
-        <div id="result-field">msg...</div>
-    </main>
     <script src="js/index.js"></script>
 </body>
 </html>
