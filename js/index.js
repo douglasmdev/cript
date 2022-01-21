@@ -3,7 +3,7 @@ var messageForm = document.getElementById('message-form');
 var messageField = document.getElementById('the-message');
 var cypherField = document.getElementById('cypher-and-increment');
 var cypherSelect = document.getElementById('cypher-select');
-var increment = document.createElement('input');
+var increment = document.createElement('select');
 var incrementLabel = document.createElement('label');
 var codeRadio = document.getElementById('code-radio');
 var decodeRadio = document.getElementById('decode-radio');
@@ -14,10 +14,18 @@ var linebreak = document.createElement('br');
 var userInput = '';
 var action = 'code';
 var cypher = 'base64';
+var key = '1';
 
-increment.type = 'text';
 increment.setAttribute('id', 'increment');
-increment.setAttribute('class', 'wide-text-input');
+increment.setAttribute('name', 'increment');
+
+var incrementOption;
+for (var i = 1; i <= 126; i++) {
+    incrementOption = document.createElement('option');
+    incrementOption.value = `${i}`;
+    incrementOption.innerText = `${i}`;
+    increment.appendChild(incrementOption);
+}
 
 incrementLabel.setAttribute('for', 'increment');
 incrementLabel.innerText = 'Informe o incremento a ser utilizado:';
@@ -56,4 +64,19 @@ submitButton.addEventListener('click', (e) => {
         resultField.innerText = btoa(userInput);
     else if (action == 'decode' && cypher == 'base64')
         resultField.innerText = atob(userInput);
+
+    if (action == 'code' && cypher == 'cesar')
+        resultField.innerText = encodeToCesar(userInput, key);
 });
+
+function encodeToCesar(str, num) {
+    var listOfCharCodes = [];
+    for (var i = 0; i < str.length; i++) {
+        listOfCharCodes.push(str.charCodeAt(i));
+    }
+
+    for (var i = 0; i < listOfCharCodes.length; i++) {
+        listOfCharCodes[i] += num;
+    }
+
+}
