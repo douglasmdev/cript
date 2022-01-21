@@ -14,7 +14,7 @@ var linebreak = document.createElement('br');
 var userInput = '';
 var action = 'code';
 var cypher = 'base64';
-var key = '1';
+var key = 1;
 
 increment.setAttribute('id', 'increment');
 increment.setAttribute('name', 'increment');
@@ -30,6 +30,9 @@ for (var i = 1; i <= 126; i++) {
 incrementLabel.setAttribute('for', 'increment');
 incrementLabel.innerText = 'Informe o incremento a ser utilizado:';
 
+increment.addEventListener('change', () => {
+    key = parseInt(increment.value);
+});
 
 codeRadio.addEventListener('click', () => {
     submitButton.innerText = 'codificar mensagem';
@@ -67,16 +70,30 @@ submitButton.addEventListener('click', (e) => {
 
     if (action == 'code' && cypher == 'cesar')
         resultField.innerText = encodeToCesar(userInput, key);
+    else if (action == 'decode' && cypher == 'cesar')
+        resultField.innerText = decodeFromCesar(userInput, key);
 });
 
 function encodeToCesar(str, num) {
-    var listOfCharCodes = [];
+    let encodedStr = '';
+    let encodedChar = '';
+
     for (var i = 0; i < str.length; i++) {
-        listOfCharCodes.push(str.charCodeAt(i));
+        encodedChar = str.charCodeAt(i) + num;
+        encodedStr += String.fromCharCode(encodedChar);
     }
 
-    for (var i = 0; i < listOfCharCodes.length; i++) {
-        listOfCharCodes[i] += num;
+    return encodedStr;
+}
+
+function decodeFromCesar(str, num) {
+    let decodedStr = '';
+    let decodedChar = '';
+
+    for (var i = 0; i < str.length; i++) {
+        decodedChar = str.charCodeAt(i) - num;
+        decodedStr += String.fromCharCode(decodedChar);
     }
 
+    return decodedStr;
 }
