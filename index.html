@@ -4,31 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Criptografia</title>
 </head>
 <body>
-    
-    <form action="#" id="message-form">
+    <main id="form-main">
 
-        <label for="the-message">Digite sua mensagem:</label><br>
-        <input type="text" id="the-message"><br><br>
+        <form action="#" id="message-form">
+            <h1 class="big-text">Criptografia</h1>
 
-        <div id="cypher-and-increment">
-            <select name="cypher" id="cypher-select">
-                <option value="base64">base64</option>
-                <option value="cesar">cesar</option>
-            </select><br><br>
-        </div>
+            <div id="message-field">
+                <label for="the-message">Digite sua mensagem:</label><br>
+                <input type="text" class="wide-text-input" id="the-message"><br>
+            </div>
 
-        <input type="radio" name="code-decode" id="code-radio" value="code" checked>
-        <label for="code-decode">Codificar</label><br>
-        <input type="radio" name="code-decode" id="decode-radio" value="decode">
-        <label for="code-decode">Decodificar</label><br><br>
+            <div id="cypher-and-increment">
+                <select name="cypher" id="cypher-select">
+                    <option value="base64">base64</option>
+                    <option value="cesar">cesar</option>
+                </select><br>
+            </div>
 
-        <button type="submit" id="submit-button">codificar mensagem</button>
-        
-    </form>
-    
+            <div id="radio-field">
+                <input type="radio" name="code-decode" id="code-radio" value="code" checked>
+                <label for="code-decode">Codificar</label><br>
+                <input type="radio" name="code-decode" id="decode-radio" value="decode">
+                <label for="code-decode">Decodificar</label><br>
+            </div>
+
+            <button type="submit" id="submit-button">codificar mensagem</button>
+        </form>
+    </main>
+
+    <main id="results-main">
+        <h1 class="big-text" id="result-title">Sua mensagem codificada/decodificada</h1>
+        <div id="result-field">msg...</div>
+    </main>
     <script src="js/index.js"></script>
 </body>
 </html>

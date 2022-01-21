@@ -1,0 +1,36 @@
+
+body {
+    background-color: black;
+}
+
+main {
+    color: white;
+    height: 100vh;
+}
+
+#form-main {
+    width: 40vw;
+    float: left;
+    padding-left: 2%;
+}
+
+#results-main {
+    width: 60vw;
+    margin-left: 40vw;
+    text-align: center;
+}
+
+#result-field {
+    width: 75%;
+    min-height: 15%;
+    max-height: fit-content;
+    margin-left: 12%;
+    background-color: white;
+    color: black;
+}
+
+
+
+#message-form {
+    height: 100%;
+}
