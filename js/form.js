@@ -1,4 +1,3 @@
-
 var messageForm = document.getElementById('message-form');
 var messageField = document.getElementById('the-message');
 var cypherField = document.getElementById('cypher-and-increment');
@@ -19,16 +18,21 @@ var key = 1;
 increment.setAttribute('id', 'increment');
 increment.setAttribute('name', 'increment');
 
-var incrementOption;
-for (var i = 1; i <= 126; i++) {
-    incrementOption = document.createElement('option');
-    incrementOption.value = `${i}`;
-    incrementOption.innerText = `${i}`;
-    increment.appendChild(incrementOption);
-}
 
 incrementLabel.setAttribute('for', 'increment');
 incrementLabel.innerText = 'Informe o incremento a ser utilizado:';
+
+function fillSelect(select, optionsNumber) {
+    var incrementOption;
+    for (var i = 1; i <= optionsNumber; i++) {
+        incrementOption = document.createElement('option');
+        incrementOption.value = `${i}`;
+        incrementOption.innerText = `${i}`;
+        select.appendChild(incrementOption);
+    }
+}
+
+fillSelect(increment, 126);
 
 increment.addEventListener('change', () => {
     key = parseInt(increment.value);
@@ -47,11 +51,11 @@ decodeRadio.addEventListener('click', () => {
 });
 
 cypherSelect.addEventListener('change', () => {
-    if (cypherSelect.value == 'cesar') {
+    if (cypherSelect.value == 'caesar') {
         cypherField.appendChild(incrementLabel);
         cypherField.appendChild(linebreak);
         cypherField.appendChild(increment);
-        cypher = 'cesar';
+        cypher = 'caesar';
     } else {
         incrementLabel.remove();
         increment.remove();
@@ -64,36 +68,12 @@ submitButton.addEventListener('click', (e) => {
     userInput = messageField.value;
 
     if (action == 'code' && cypher == 'base64')
-        resultField.innerText = btoa(userInput);
+        resultField.innerText = encodeToBase64(userInput);
     else if (action == 'decode' && cypher == 'base64')
-        resultField.innerText = atob(userInput);
+        resultField.innerText = decodeFromBase64(userInput);
 
-    if (action == 'code' && cypher == 'cesar')
-        resultField.innerText = encodeToCesar(userInput, key);
-    else if (action == 'decode' && cypher == 'cesar')
-        resultField.innerText = decodeFromCesar(userInput, key);
+    if (action == 'code' && cypher == 'caesar')
+        resultField.innerText = encodeToCaesar(userInput, key);
+    else if (action == 'decode' && cypher == 'caesar')
+        resultField.innerText = decodeFromCaesar(userInput, key);
 });
-
-function encodeToCesar(str, num) {
-    let encodedStr = '';
-    let encodedChar = '';
-
-    for (var i = 0; i < str.length; i++) {
-        encodedChar = str.charCodeAt(i) + num;
-        encodedStr += String.fromCharCode(encodedChar);
-    }
-
-    return encodedStr;
-}
-
-function decodeFromCesar(str, num) {
-    let decodedStr = '';
-    let decodedChar = '';
-
-    for (var i = 0; i < str.length; i++) {
-        decodedChar = str.charCodeAt(i) - num;
-        decodedStr += String.fromCharCode(decodedChar);
-    }
-
-    return decodedStr;
-}
