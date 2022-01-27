@@ -8,6 +8,10 @@
     font-size: x-large;
 }
 
+body {
+    background-color: rgb(56, 55, 55);
+}
+
 h1, label, button, #radio-field {
     font-family: 'VT323';
 }
@@ -19,10 +23,11 @@ div, button {
 #form-main {
     display: flex;
     justify-content: center;
-    border: 2px solid black;
+    border: 2px solid rgba(0, 0, 0, 0.692);
     width: 60vw;
     height: 100vh;
     margin-left: 20vw;
+    background-color: rgba(0, 0, 0, 0.733);
 }
 
 #message-form {
@@ -30,6 +35,7 @@ div, button {
     flex-direction: column;
     justify-content: center;
     width: 60%; 
+    color: rgb(13, 204, 13); 
 }
 
 #the-message {
@@ -38,4 +44,17 @@ div, button {
 
 #result-field {
     border: 2px solid black;
+    width: 100%;
+}
+
+@media (max-width: 1000px) {
+    #form-main {
+        width: 90vw;
+        margin-left: 5vw;
+        margin-right: 5vw;
+    }
+
+    #message-form {
+        height: 100%;
+    }
 }

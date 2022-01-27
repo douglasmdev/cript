@@ -3,6 +3,7 @@ function encodeToCaesar(str, num) {
     let encodedChar = '';
 
     for (var i = 0; i < str.length; i++) {
+
         encodedChar = str.charCodeAt(i) + num;
         encodedStr += String.fromCharCode(encodedChar);
     }
